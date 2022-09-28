@@ -41,7 +41,7 @@ mount_nfs = Mount(source="local", target="/repos", type="volume", driver_config=
 
 with DAG(dag_id='jardiner_carter_dag', start_date=datetime(2022,9,26), schedule_interval='@hourly', catchup=False, tags=["Plantmonitor", "Jardiner"], default_args=args) as dag:
 
-    task_branch_pull_ssh = build_branch_pull_ssh_task(dag=dag, task_name='jardiner_carter')
+    task_branch_pull_ssh = build_branch_pull_ssh_task(dag=dag, task_name='jardiner_carter_notify')
     task_git_clone = build_git_clone_ssh_task(dag=dag)
     task_check_repo = build_check_repo_task(dag=dag)
     task_image_build = build_image_build_task(dag=dag)
